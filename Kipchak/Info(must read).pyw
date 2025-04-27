@@ -27,7 +27,7 @@ def do_move(event):
 
 root = tk.Tk()
 root.title("")
-root.geometry("500x600")
+root.geometry("700x900")
 root.configure(bg="white")
 root.overrideredirect(True)
 
@@ -80,7 +80,7 @@ legal_text = tk.Label(content_frame, text=(
 legal_text.pack(anchor="w", pady=(5, 10))
 
 
-agree_text = tk.Label(content_frame, text="By using Kipchak-1.1.0 you agree with the Terms and Conditions.", bg="white", fg="black", font=("Helvetica", 10, "italic"))
+agree_text = tk.Label(content_frame, text="By using Kipchak-1.2.0 you agree with the Terms and Conditions.", bg="white", fg="black", font=("Helvetica", 10, "italic"))
 agree_text.pack(anchor="w", pady=(0, 10))
 
 
