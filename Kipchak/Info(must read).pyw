@@ -27,7 +27,7 @@ def do_move(event):
 
 root = tk.Tk()
 root.title("")
-root.geometry("700x900")
+root.geometry("700x750")
 root.configure(bg="white")
 root.overrideredirect(True)
 
