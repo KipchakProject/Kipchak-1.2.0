@@ -57,7 +57,6 @@ scroll_text = scrolledtext.ScrolledText(content_frame, wrap=tk.WORD, bg="white",
 scroll_text.insert(tk.END, """Features:
 Payload generator
 Listener
-Backdoor (starts after reboot)
 GUI
 Basic cmd commands
 send messages
