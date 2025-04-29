@@ -1,0 +1,39 @@
+MIT License with Security Use Restriction
+
+Copyright (c) [2025] [Kipchak-Project]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files, to deal
+in the Software for lawful purposes, including use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software, subject
+to the following conditions:
+
+1. The above copyright notice and this permission notice shall be included in
+   all copies or substantial portions of the Software.
+
+2. The Software is intended solely for cybersecurity research, educational use,
+   and lawful penetration testing with explicit written authorization.
+
+3. Any use of this Software to gain unauthorized access to systems, exfiltrate data,
+   cause harm or disruption, hide malicious activity, or violate any applicable law
+   is strictly prohibited.
+
+4. The Software does not include or support any surveillance features such as:
+   - Keylogging
+   - Screen capturing or streaming
+   - Unauthorized file manipulation
+   - Data theft or spying
+   Any attempt to add such features is against the intent and license of this Software.
+
+5. The developers of this Software take no responsibility and assume no liability
+   for any misuse, damage, or legal consequences resulting from the use of this Software.
+
+6. Users are solely responsible for ensuring their usage complies with local, national,
+   and international laws and regulations.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
